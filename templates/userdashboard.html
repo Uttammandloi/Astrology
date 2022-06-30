@@ -1,0 +1,80 @@
+{% extends 'basehome.html' %}
+{% block content %}
+    {% load static %}
+    <!-- Masthead-->
+    <header class="masthead" id="particles-js">
+        <div class="container">
+            <div class="masthead-subheading" style="margin-top: 100px;">
+                Enter here to be given Astrological Clues about your Future. By submitting your Birthdata & watching the webcast, you can be Synchronistically chosen to get a Free Reading during the live show.
+            </div>
+          
+            
+            {% comment %} <a class="btn btn-primary btn-lg text-uppercase m-4"
+               href="{% url 'birthdata' %}">Enter Birth Date <a>
+                <a class="btn btn-primary btn-lg text-uppercase m-4"
+                   href="{% url 'readingrate' %}">Rate Your Reading!</a>
+                <a class="btn btn-primary btn-lg text-uppercase m-4"
+                   href="{% url 'changepassword' %}">Change Password</a>
+                <a class="btn btn-primary btn-lg text-uppercase m-4"
+                   href="{% url 'contact' %}">Contact Us</a>  {% endcomment %}
+
+
+                {% comment %} <a class="btn btn-danger btn-lg text-uppercase m-5" href="{% url 'logout' %}">Logout</a> {% endcomment %}
+            </div>
+            <section class="page-section" >
+                <div class="container">
+                    <div class="text-center">
+                        {% if messages %}
+                            {% for message in messages %}
+                                {% if message.tags == "error" %}
+                                    <div class="alert alert-danger">{{ message }}</div>
+                                {% else %}
+                                    <div class="alert alert-success">{{ message }}</div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        {% comment %} {% if messages %}
+                            {% for message in messages %}<div class="text-success">{{ message }}</div>{% endfor %}
+                        {% endif %} {% endcomment %}
+                        <h2 class="section-heading text-uppercase">User Dashboard</h2>
+                    </div>
+                    <!-- * * * * * * * * * * * * * * *-->
+                    <!-- * * SB Forms Contact Form * *-->
+                    <!-- * * * * * * * * * * * * * * *-->
+                    <!-- This form is pre-integrated with SB Forms.-->
+                    <!-- To make this form functional, sign up at-->
+                    <!-- https://startbootstrap.com/solution/contact-forms-->
+                    <!-- to get an API token!-->
+                </div>
+            </section>
+        </header>
+        <!-- Contact-->
+        
+        <!-- Footer-->
+        <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2022</div>
+                    <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    {% endblock %}
+    {% comment %} {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-warning alert-dismissible fade show col-md-6  offset-md-3 " role="alert">
+                                <strong>{{ message }}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endfor %}
+    {% endif %} {% endcomment %}

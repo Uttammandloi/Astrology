@@ -1,0 +1,148 @@
+{% extends 'basehome.html' %}
+{% block content %}
+    {% load static %}
+    <!-- Masthead-->
+    <header class="masthead" id="particles-js" style="height: 100%;">
+        <div class="container">
+            <div class="masthead-subheading">
+                Enter here to be given Astrological Clues about your Future. By submitting your Birthdata & watching the webcast, you can be Synchronistically chosen to get a Free Reading during the live show.
+            </div>
+            {% if 'token' not in  request.session %}
+                <a class="btn btn-primary btn-lg text-uppercase m-5"
+                   href="{% url 'home' %}">Home <a>
+                {% endif %}
+                {% comment %} <a class="btn btn-primary btn-lg text-uppercase m-5"
+                   href="{% url 'userdashboard' %}">User Dashboard</a>
+                <a class="btn btn-primary btn-lg text-uppercase m-5"
+                   href="{% url 'contact' %}">Contact Us</a> {% endcomment %}
+            </div>
+
+            <section class="page-section" >
+                <div class="container">
+                    <div class="text-center">
+                        <h2 class="section-heading text-uppercase">Rate Your Live Stream Reading</h2>
+                    </div>
+                    <!-- * * * * * * * * * * * * * * *-->
+                    <!-- * * SB Forms Contact Form * *-->
+                    <!-- * * * * * * * * * * * * * * *-->
+                    <!-- This form is pre-integrated with SB Forms.-->
+                    <!-- To make this form functional, sign up at-->
+                    <!-- https://startbootstrap.com/solution/contact-forms-->
+                    <!-- to get an API token!-->
+                    <form id="contactForm" method="post" class="mt-5">
+                        {% csrf_token %}
+                        <input type="hidden" name="user_id" value="{{ user_id }}">
+                        <div class="row align-items-center d-flex justify-content-center mb-5"  style="text-align: left;">
+                            <div class="col-md-6 ">
+                                {% if messages %}
+                                    {% for message in messages %}<div class="text-white">{{ message }}</div>{% endfor %}
+                                {% endif %}
+                                <div class="form-group">
+                                    <!-- Name input-->
+                                    <label for="screen_name" class="text-white mt-2">User/Screen Name *</label>
+                                    <input class="form-control"
+                                           id="screen_name"
+                                           name="screen_name"
+                                           type="text"
+                                           placeholder=" User/screen name you used to register  *"
+                                           required/>
+                                    <div class="invalid-feedback" data-sb-feedback="User/screen name:required">A name is required.</div>
+                                </div>
+                                <div class="form-group">
+                                    <!-- Email address input-->
+                                    <label for="email" class="text-white mt-2">Email *</label>
+                                    <input class="form-control"
+                                           id="email"
+                                           name="email"
+                                           type="email"
+                                           placeholder=" Email *"
+                                           required/>
+                                    <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                                    <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <!-- Name input-->
+                                    <h5 class="text-white">How would you rate your Synchronicity Stream reading? *</h5>
+                                    <input type="radio"
+                                           id="rate_your_synchronicity"
+                                           name="rate_your_synchronicity"
+                                           value="Very Satisfied">
+                                    <label for="html"class="text-white">Very Satisfied</label>
+                                    <br>
+                                    <input type="radio"
+                                           id="rate_your_synchronicity"
+                                           name="rate_your_synchronicity"
+                                           value="Satisfied">
+                                    <label for="css" class="text-white">Satisfied</label>
+                                    <br>
+                                    <input type="radio"
+                                           id="rate_your_synchronicity"
+                                           name="rate_your_synchronicity"
+                                           value="Unsatisfied">
+                                    <label for="javascript"class="text-white">Unsatisfied</label>
+                                    <div class="invalid-feedback" data-sb-feedback="User/screen name:required">A name is required.</div>
+                                </div>
+                                <div class="form-group form-group-textarea mb-md-0">
+                                    <!-- Message input-->
+                                    <label for="message" class="text-white mt-2">Your Feedback is Welcome! *</label>
+                                    <textarea class="form-control"
+                                              id="message"
+                                              name="message"
+                                              placeholder="Please provide us with helpful feedback or a testimonial we can share with others.*"
+                                              data-sb-validations="required"></textarea>
+                                    <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Submit success message-->
+                        <!---->
+                        <!-- This is what your users will see when the form-->
+                        <!-- has successfully submitted-->
+                        <div class="d-none" id="submitSuccessMessage">
+                            <div class="text-center text-white mb-3">
+                                <div class="fw-bolder">Form submission successful!</div>
+                                To activate this form, sign up at
+                                <br />
+                                <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                            </div>
+                        </div>
+                        <!-- Submit error message-->
+                        <!---->
+                        <!-- This is what your users will see when there is-->
+                        <!-- an error submitting the form-->
+                        <div class="d-none" id="submitErrorMessage">
+                            <div class="text-center text-danger mb-3">Error sending message!</div>
+                        </div>
+                        <!-- Submit Button-->
+                        <div class="text-center">
+                            <button class="btn btn-colour-1 btn-lg text-uppercase m-3"
+                                    id="registerButton"
+                                    name="register"
+                                    type="submit">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </header>
+        <!-- Contact-->
+        
+        <!-- Footer-->
+        <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2022</div>
+                    <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    {% endblock %}

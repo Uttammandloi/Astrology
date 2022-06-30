@@ -1,0 +1,92 @@
+
+
+  {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>CelestialUI Admin</title>
+        <!-- base:css -->
+        <link rel="stylesheet" href="{% static 'assetdata/vendors/typicons.font/font/typicons.css' %}">
+        <link rel="stylesheet" href="{% static 'assetdata/vendors/css/vendor.bundle.base.css' %}">
+        <!-- endinject -->
+        <!-- plugin css for this page -->
+        <!-- End plugin css for this page -->
+        <!-- inject:css -->
+        <link rel="stylesheet" href="{% static 'assetdata/css/vertical-layout-light/style.css' %}">
+        <!-- endinject -->
+        <link rel="shortcut icon" href="{% static 'assetdata/images/favicon.png' %}" />
+    </head>
+    <body>
+        
+        
+
+        <div class="container-scroller">
+            <div class="container-fluid page-body-wrapper full-page-wrapper">
+              <div class="content-wrapper d-flex align-items-center auth px-0">
+                <div class="row w-100 mx-0">
+                  <div class="col-lg-4 mx-auto">
+                    <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                      <div class="brand-logo">
+                        <img src="{% static 'assetdata/images/astrology.svg' %}" alt="logo">
+                      </div>
+                      <h4>Hello! let's get started</h4>
+                      <h6 class="font-weight-light">Sign in to continue.</h6>
+                      <form class="pt-3" method="POST" action="{% url 'backendlogin' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                          {% if messages %}
+                                {% for message in messages %}
+                                    {% if message.tags == "error" %}
+                                        <div class="alert alert-danger">{{ message }}</div>
+                                    {% else %}
+                                        <div class="alert alert-success">{{ message }}</div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                          <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" name="username" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                          <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" name="password" placeholder="Password">
+                        </div>
+                        <div class="mt-3">
+                          <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="{% url 'backendlogin' %}">SIGN IN</button>
+                        </div>
+                        <div class="my-2 d-flex justify-content-between align-items-center">
+                          
+                          {% comment %} <a href="#" class="auth-link text-black">Forgot password?</a> {% endcomment %}
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- content-wrapper ends -->
+            </div>
+            <!-- page-body-wrapper ends -->
+          </div>
+<!-- base:js -->
+<script src="{% static 'assetdata/vendors/js/vendor.bundle.base.js' %}"></script>
+<!-- endinject -->
+<!-- Plugin js for this page-->
+<!-- End plugin js for this page-->
+<!-- inject:js -->
+<script src="{% static 'assetdata/js/off-canvas.js' %}"></script>
+<script src="{% static 'assetdata/js/hoverable-collapse.js' %}"></script>
+<script src="{% static 'assetdata/js/template.js' %}"></script>
+<script src="{% static 'assetdata/js/settings.js' %}"></script>
+<script src="{% static 'assetdata/js/todolist.js' %}"></script>
+<!-- endinject -->
+<!-- plugin js for this page -->
+<script src="{% static 'assetdata/vendors/progressbar.js/progressbar.min.js' %}"></script>
+<script src="{% static 'assetdata/vendors/chart.js/Chart.min.js' %}"></script>
+<!-- End plugin js for this page -->
+<!-- Custom js for this page-->
+<script src="{% static 'assetdata/js/dashboard.js' %}"></script>
+<!-- End custom js for this page-->
+</body>
+</html>
+<link rel="stylesheet" href="{% static 'assetdata/vendors/css/vendor.bundle.base.css' %}">

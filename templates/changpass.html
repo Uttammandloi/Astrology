@@ -1,0 +1,56 @@
+{% extends 'basehome.html' %}
+{% block content %}
+    {% load static %}
+    <section class="page-section" id="particles-js">
+
+        <div class="container" style="margin-top: 100px;">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase text-white">Change Passwords</h2>
+            </div>
+            
+            <form id="contactForm"
+                  method="post"
+                  action
+                  class="mt-5 text-white"
+                  novalidate>
+                {% csrf_token %}
+                {% if from.non_field_errors %}
+                    {% for error in from.non_field_errors %}
+                        <p>
+                            {{ error }}
+                        </p>
+                    {% endfor %}
+                {% endif %}
+                {% for fm in form %}
+                    {{ fm.label_tag  }} {{ fm }} {{ fm.errors|striptags }}
+                    <br>
+                    <br>
+                {% endfor %}
+                <input class="btn btn-colour-1  text-uppercase m-3"
+                       type="submit"
+                       value="Save">
+            </form>
+        </div>
+    </section>
+{% endblock %}
+{% comment %} <!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+        </form>
+    </body>
+</html> {% endcomment %}

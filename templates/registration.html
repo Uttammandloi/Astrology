@@ -1,0 +1,160 @@
+{% extends 'basehome.html' %}
+{% block content %}
+    {% load static %}
+    <!-- Masthead-->
+    <header class="masthead"  id="particles-js" style="height: 100%;">
+        <div class="container">
+            <div class="masthead-subheading">
+                Enter here to be given Astrological Clues about your Future. By submitting your Birthdata & watching the webcast, you can be Synchronistically chosen to get a Free Reading during the live show.
+            </div>
+            {% comment %} <a class="btn btn-primary btn-lg text-uppercase m-5"
+               href="{% url 'home' %}">Home <a>
+                <a class="btn btn-primary btn-lg text-uppercase m-5"
+                   href="{% url 'userdashboard' %}">User Dashboard</a>
+                <a class="btn btn-primary btn-lg text-uppercase m-5"
+                   href="{% url 'contact' %}">Contact Us</a> {% endcomment %}
+            </div>
+            <section class="page-section" >
+                <div class="container">
+                    <div class="text-center">
+                        <h2 class="section-heading text-uppercase">Registration Form</h2>
+                        <h2 class="section-subheading text-muted">Create Your Screen Name & Site Registration</h2>
+                        <h5 class="section-subheading text-muted">You will be able to enter your birthdata after logging in.</h5>
+                    </div>
+                    <!-- * * * * * * * * * * * * * * *-->
+                    <!-- * * SB Forms Contact Form * *-->
+                    <!-- * * * * * * * * * * * * * * *-->
+                    <!-- This form is pre-integrated with SB Forms.-->
+                    <!-- To make this form functional, sign up at-->
+                    <!-- https://startbootstrap.com/solution/contact-forms-->
+                    <!-- to get an API token!-->
+                    <form id="contactForm"
+                          method="POST"
+                          action="{% url 'registration' %}"
+                          class="mt-5">
+                        {% csrf_token %}
+                        <div class="row align-items-center d-flex justify-content-center mb-5" style="text-align: left;">
+                            <div class="col-md-6 ">
+                                {% if messages %}
+                                    <div class="alert alert-success alert-dismissible" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <strong>Congratulations!</strong> {{ message }}
+                                </div>
+                                {% for message in messages %}<div class="text-white">{{ message }}</div>{% endfor %}
+                            {% endif %}
+                            <div class="form-group">
+                                <!-- Name input-->
+                                <label for="name" class="text-white mt-2">Name *</label>
+                                <input class="form-control"
+                                       id="name"
+                                       name="firstname"
+                                       type="text"
+                                       placeholder=" Name *"
+                                       required/>
+                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            </div>
+                            <div class="form-group">
+                                <!-- Name input-->
+                                <label for="username" class="text-white mt-2">Username *</label>
+                                <input class="form-control"
+                                       id="username"
+                                       name="username"
+                                       type="text"
+                                       placeholder=" Username *"
+                                       required/>
+                                <div class="invalid-feedback" data-sb-feedback="username:required">A username is required.</div>
+                            </div>
+                            <div class="form-group">
+                                <!-- Email address input-->
+                                <label for="email" class="text-white mt-2">Email *</label>
+                                <input class="form-control"
+                                       id="email"
+                                       name="email"
+                                       type="email"
+                                       placeholder=" Email *"
+                                       required/>
+                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                            </div>
+                            <div class="form-group">
+                                <!-- Phone number input-->
+                                <label for="password" class="text-white mt-2">Password *</label>
+                                <input class="form-control"
+                                       id="password"
+                                       name="password"
+                                       type="password"
+                                       placeholder=" Password *"
+                                       required/>
+                                <div class="invalid-feedback" data-sb-feedback="password:required">Password is required.</div>
+                            </div>
+                            <div class="form-group mb-md-0">
+                                <!-- Phone number input-->
+                                <label for="confirm_password" class="text-white mt-2">Confrim password *</label>
+                                <input class="form-control"
+                                       id="confirm_password"
+                                       name="confirm_password"
+                                       type="password"
+                                       placeholder="Confrim password *"
+                                       required/>
+                                <div class="invalid-feedback" data-sb-feedback="confirm password:required">Confirm Password is required.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Submit success message-->
+                    <!---->
+                    <!-- This is what your users will see when the form-->
+                    <!-- has successfully submitted-->
+                    <div class="d-none" id="submitSuccessMessage">
+                        <div class="text-center text-white mb-3">
+                            <div class="fw-bolder">Form submission successful!</div>
+                            To activate this form, sign up at
+                            <br />
+                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                        </div>
+                    </div>
+                    <!-- Submit error message-->
+                    <!---->
+                    <!-- This is what your users will see when there is-->
+                    <!-- an error submitting the form-->
+                    <div class="d-none" id="submitErrorMessage">
+                        <div class="text-center text-danger mb-3">Error sending message!</div>
+                    </div>
+                    <!-- Submit Button-->
+                    <div class="text-center">
+                        <button class="btn btn-colour-1 btn-lg text-uppercase m-3"
+                                id="registerButton"
+                                name="register"
+                                type="submit">
+                            Register
+                        </button>
+                        <a class="btn btn-colour-1 btn-lg text-uppercase m-3"
+                           href="{% url 'login' %}"
+                           id="loginButton"
+                           name="login">Login</a>
+                    </div>
+                </form>
+            </div>
+        </section>
+        </header>
+        <!-- Contact-->
+        
+    <!-- Footer-->
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2022</div>
+                <div class="col-lg-4 my-3 my-lg-0">
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+                    <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
